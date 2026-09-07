@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lebenslauf - Stephan Epp</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #2563eb;
+            --secondary: #0f172a;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --border-color: #e2e8f0;
+            --accent: #dbeafe;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-main);
+            background-color: #f1f5f9;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 40px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border-radius: 8px;
+        }
+
+        /* Header Layout */
+        header {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .header-title h1 {
+            color: var(--secondary);
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .header-title h2 {
+            color: var(--primary-light);
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        .contact-info {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .contact-info a {
+            color: var(--primary-light);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Profile Banner */
+        .profile-summary {
+            background-color: var(--bg-light);
+            border-left: 4px solid var(--primary);
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            border-radius: 0 6px 6px 0;
+            font-size: 13.5px;
+        }
+
+        /* Layout Grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        /* Timeline Items */
+        .timeline-item {
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 3px;
+        }
+
+        .timeline-role {
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .timeline-company {
+            font-weight: 600;
+            color: var(--primary-light);
+            font-size: 13px;
+        }
+
+        .timeline-date {
+            font-size: 12px;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .timeline-body {
+            font-size: 13px;
+        }
+
+        ul.bullets {
+            list-style-type: disc;
+            margin-left: 18px;
+            margin-top: 5px;
+        }
+
+        ul.bullets li {
+            margin-bottom: 3px;
+        }
+
+        /* Cards for Special Successes */
+        .success-card {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 12px 15px;
+            margin-bottom: 12px;
+        }
+
+        .success-card-title {
+            font-weight: 700;
+            color: var(--secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .tags {
+            margin-top: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .tag {
+            background-color: var(--accent);
+            color: var(--primary);
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        /* Tech Stack & Sidebar Styling */
+        .tech-category {
+            margin-bottom: 12px;
+        }
+
+        .tech-category-title {
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--secondary);
+            margin-bottom: 2px;
+        }
+
+        .tech-list {
+            font-size: 12.5px;
+            color: var(--text-muted);
+        }
+
+        .evaluation-note {
+            font-size: 11px;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Print Optimization */
+        @media print {
+            body {
+                background: none;
+            }
+
+            .page {
+                box-shadow: none;
+                padding: 0;
+                max-width: 100%;
+            }
+
+            .grid-container {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .contact-info {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <header>
+            <div class="header-title">
+                <h1>Stephan Epp</h1>
+                <h2>Senior Software Entwickler | M.Sc. Informatik</h2>
+            </div>
+            <div class="contact-info">
+                <div>Kammermühlenweg 4, 33607 Bielefeld</div>
+                <div>+49 163 814 0605</div>
+                <div><a href="mailto:Stephan_Epp@web.de">Stephan_Epp@web.de</a> / <a
+                        href="mailto:hjstephan86@gmail.com">hjstephan86@gmail.com</a></div>
+                <div><a href="https://github.com/naphets29" target="_blank">github.com/naphets29</a></div>
+                <div>Geb: 29.08.1986 | Verheiratet, 5 Kinder</div>
+            </div>
+        </header>
+        <div class="profile-summary">
+            <strong>Profil:</strong> Erfahrener Senior Software Entwickler mit umfassender
+            Expertise in der Entwicklung komplexer Softwarelösungen für verschiedene Branchen
+            (Automotive, Verkehrstechnik, Finanzverwaltung).
+            Breites Technologie-Spektrum mit Schwerpunkten in Jakarta EE, Python (FastAPI),
+            .NET/Entity Framework, PostgreSQL/Oracle SQL sowie in der Embedded Entwicklung in C
+            und hardwarenaher Programmierung mit
+            VHDL/Verilog. Nachgewiesene Erfolge in
+            Anforderungsanalyse, Software-Architektur, Testing und
+            Deployment.
+        </div>
+        <div class="grid-container">
+            <!-- Main Column -->
+            <div class="main-column">
+                <section>
+                    <div class="section-title">Besondere Erfolge</div>
+                    <div class="success-card">
+                        <div class="success-card-title">
+                            <span>Subgraph Algorithmus mit Laufzeit O(n^3)</span>
+                            <span class="timeline-date">2026</span>
+                        </div>
+                        <ul class="bullets">
+                            <li>Löst das P=NP Problem</li>
+                            <li>Entscheidet in O(n^3), ob ein Graph ein Teilgraph eines anderen Graphen ist</li>
+                        </ul>
+                        <div class="tags">
+                            <span class="tag">Komplexitätstheorie</span><span class="tag">P=NP</span>
+                        </div>
+                    </div>
+                    <div class="success-card">
+                        <div class="success-card-title">
+                            <span>Web Applikation pyble – Bibelleser-Web-App</span>
+                            <span class="timeline-date">2025</span>
+                        </div>
+                        <ul class="bullets">
+                            <li>Vollständige Web-App mit FastAPI, Jinja2-Templates, Lifespan-Context
+                                und REST-API</li>
+                            <li>Playwright UI-Tests (102 Tests), pytest-Coverage = 97
+                                %</li>
+                            <li>Responsives CSS-Grid-Layout (2–5 Spalten, sticky
+                                Header)</li>
+                            <li>XSS-Schutz (HTML-Escaping), O(1)-Lookup per normalisierten
+                                Dict-Keys</li>
+                            <li>Parallelvergleich mehrerer Bibelübersetzungen mit zeilengenauem
+                                Vers-Alignment</li>
+                        </ul>
+                        <div class="tags">
+                            <span class="tag">FastAPI</span><span class="tag">Playwright</span><span
+                                class="tag">TDD</span><span class="tag">98%
+                                Coverage</span>
+                        </div>
+                    </div>
+                    <div class="success-card">
+                        <div class="success-card-title">
+                            <span>Peter Berghaus GmbH</span>
+                            <span class="timeline-date">2024</span>
+                        </div>
+                        <div style="font-weight: 600; font-size: 12.5px;">Integrationstests nach
+                            Zyklomatischer Komplexität</div>
+                        <ul class="bullets">
+                            <li>Hohe Testüberdeckung durch komplexitätsgetriebenen
+                                Ansatz</li>
+                            <li>Absteigende Sortierung kritischer Methoden als *.txt-Datei in
+                                Git</li>
+                            <li>Ermöglicht Entwicklern gezielte Refaktorierung der kritischsten
+                                Methoden</li>
+                            <li>Kontinuierliche Verbesserung durch Commit reduzierter
+                                Komplexitätswerte</li>
+                        </ul>
+                        <div class="tags">
+                            <span class="tag">Code-Coverage</span><span class="tag">Zyklomatische
+                                Komplexität</span>
+                        </div>
+                    </div>
+                    <div class="success-card">
+                        <div class="success-card-title">
+                            <span>Hella GmbH</span>
+                            <span class="timeline-date">2019</span>
+                        </div>
+                        <div style="font-weight: 600; font-size: 12.5px;">Dezentrale
+                            NV-Datengenerierung aus IBM Engineering Rhapsody</div>
+                        <ul class="bullets">
+                            <li>Entwicklung eines Entwicklungsprozesses und Java-Plugins für
+                                Rhapsody nach V-Modell</li>
+                            <li>Code Generierung aus UML-Profil für modellgetriebene
+                                Entwicklung</li>
+                            <li>Release-Ende: Generierung auf Architektur-Ebene | Während des
+                                Release: Generierung auf Modul-Ebene</li>
+                        </ul>
+                        <div class="tags">
+                            <span class="tag">Software Engineering</span><span class="tag">UML-Profil</span>
+                        </div>
+                    </div>
+                    <div class="success-card">
+                        <div class="success-card-title">
+                            <span>dSpace GmbH</span>
+                            <span class="timeline-date">2015</span>
+                        </div>
+                        <div style="font-weight: 600; font-size: 12.5px;">Signal Editor für
+                            AutomationDesk & ControlDesk NG</div>
+                        <ul class="bullets">
+                            <li>Entwicklung einer Common Component für signalbasiertes
+                                Testen</li>
+                            <li>Produkt-Idee: Signalisbasiertes Testen in der
+                                Testautomatisierung</li>
+                            <li>Vererbung für Properties von Signal-Sets, Signals und Signal-Segments</li>
+                        </ul>
+                        <div class="tags">
+                            <span class="tag">Architektur</span><span class="tag">Innovation</span>
+                        </div>
+                    </div>
+                    <div class="success-card">
+                        <div class="success-card-title">
+                            <span>Universität Paderborn</span>
+                            <span class="timeline-date">2013</span>
+                        </div>
+                        <div style="font-weight: 600; font-size: 12.5px;">Entwicklung eines Algorithmus für Maschinelles Lernen
+                            (Note 1,6)</div>
+                        <ul class="bullets">
+                            <li>Wissenschaftliches Arbeiten: "Learning M-DNF in Boolean
+                                Circuits"</li>
+                            <li>Korrektheitsbeweis, Laufzeitanalyse, Java-Implementierung und
+                                experimentelle Analyse</li>
+                        </ul>
+                    </div>
+                </section>
+                <section>
+                    <div class="section-title">Beruflicher Werdegang</div>
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div><span class="timeline-role">Senior Software Entwickler</span> | <span
+                                    class="timeline-company">Peter Berghaus GmbH</span></div>
+                            <span class="timeline-date">11/2023 – 03/2024</span>
+                        </div>
+                        <div class="timeline-body">
+                            Verkehrstechnik
+                            <ul class="bullets">
+                                <li>Erstellung von Reportings/Auswertungen (Batterieverbrauch,
+                                    Kfz-Geschwindigkeiten)</li>
+                                <li>Entwicklung von Testumgebungen und REST-API
+                                    Erweiterungen</li>
+                                <li>Implementierung von Unittest, Integrationstests und Audit
+                                    Logs</li>
+                            </ul>
+                            <div class="evaluation-note">Bewertung: "zu unserer vollen
+                                Zufriedenheit"</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div><span class="timeline-role">Qualitätssicherung &
+                                    Automatisierung</span> | <span class="timeline-company">SALZ Automation
+                                    GmbH</span></div>
+                            <span class="timeline-date">07/2023 – 09/2023</span>
+                        </div>
+                        <div class="timeline-body">
+                            <ul class="bullets">
+                                <li>Automatisierung von Softwaretests mit LDRA
+                                    Testtool</li>
+                                <li>Dokumentation mit Visure Requirements
+                                    Management</li>
+                                <li>Versionsverwaltung mit Git und professioneller
+                                    Kundenkontakt</li>
+                            </ul>
+                            <div class="evaluation-note">Bewertung: "zu unserer vollen
+                                Zufriedenheit"</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div><span class="timeline-role">Technische Produktbetreuung</span> |
+                                <span class="timeline-company">Rechenzentrum der Finanzverwaltung NRW</span>
+                            </div>
+                            <span class="timeline-date">12/2022 – 05/2023</span>
+                        </div>
+                        <div class="timeline-body">
+                            Finanzverwaltung, Paderborn
+                            <ul class="bullets">
+                                <li>Koordination und Begleitung des Einsatzes von
+                                    KONSENS-Produkten</li>
+                                <li>Software-Fehleranalyse und Abstimmung mit
+                                    Entwicklungsbereich</li>
+                                <li>Produkt- und Prozess-Dokumentation, Einarbeitung in
+                                    COBOL</li>
+                            </ul>
+                            <div class="evaluation-note">Bewertung: "zu unserer
+                                Zufriedenheit"</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div><span class="timeline-role">Software Entwickler / Architekt</span> |
+                                <span class="timeline-company">Hella GmbH & Co. KGaA</span>
+                            </div>
+                            <span class="timeline-date">04/2017 – 04/2019</span>
+                        </div>
+                        <div class="timeline-body">
+                            Automotive, Lippstadt
+                            <ul class="bullets">
+                                <li>SW-Architektur im Kundenprojekt, Änderungsanfragen und
+                                    Fehleranalyse</li>
+                                <li>Tool- und Prozessentwicklung für NonVolatile Daten (Modellierung &
+                                    Generierung)</li>
+                                <li>Software-Architektur für
+                                    CyberSecurity-Anforderungen</li>
+                                <li>Zusammenarbeit mit internationalen HELLA
+                                    Standorten</li>
+                            </ul>
+                            <div class="evaluation-note">Bewertung: "in bester Weise entsprochen" |
+                                AUTOSAR</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div><span class="timeline-role">Software Entwickler</span> | <span
+                                    class="timeline-company">Deutsche Post Adress GmbH & Co. KG</span></div>
+                            <span class="timeline-date">05/2016 – 03/2017</span>
+                        </div>
+                        <div class="timeline-body">
+                            Adress-Recherche, Gütersloh
+                            <ul class="bullets">
+                                <li>Vollständiger Software-Entwicklungszyklus: Analyse, Implementierung,
+                                    Testing</li>
+                                <li>Unit Tests, Integrationstests, Inbetriebnahme und 2nd Level
+                                    Support</li>
+                            </ul>
+                            <div class="tags"><span class="tag">Java EE 7</span><span class="tag">JPA/CDI</span></div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div><span class="timeline-role">Software Entwickler</span> | <span
+                                    class="timeline-company">dSpace GmbH</span></div>
+                            <span class="timeline-date">04/2013 – 11/2015</span>
+                        </div>
+                        <div class="timeline-body">
+                            Automotive/Luft- und Raumfahrt, Paderborn
+                            <ul class="bullets">
+                                <li>Neuentwicklung und Erweiterung des AutomationDesk
+                                    Testautomatisierungsprodukts</li>
+                                <li>Steuergeräte-Diagnose, Messen und
+                                    Kalibrieren</li>
+                                <li>Verantwortung von Common Components, Unit
+                                    Tests</li>
+                                <li>Implementierung in C#, C/C++,
+                                    Python</li>
+                            </ul>
+                            <div class="evaluation-note">Bewertung: "jederzeit voll
+                                zufrieden"</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- Sidebar Column -->
+            <div class="sidebar-column">
+                <section>
+                    <div class="section-title">Technologie-Stack</div>
+                    <div class="tech-category">
+                        <div class="tech-category-title">Backend Frameworks</div>
+                        <div class="tech-list">FastAPI (Python), uvicorn, Jinja2, Spring Boot (Java),
+                            Wildfly, Entity Framework (C#), Jakarta EE,
+                            REST-API</div>
+                    </div>
+                    <div class="tech-category">
+                        <div class="tech-category-title">Programmiersprachen</div>
+                        <div class="tech-list">Java, C#, Python, JavaScript, C (MISRA), PHP, COBOL
+                            (Grundkenntnisse)</div>
+                    </div>
+                    <div class="tech-category">
+                        <div class="tech-category-title">Datenbanken</div>
+                        <div class="tech-list">PostgreSQL, Microsoft SQL, Oracle SQL, MySQL,
+                            MariaDB</div>
+                    </div>
+                    <div class="tech-category">
+                        <div class="tech-category-title">Frontend & Mobile</div>
+                        <div class="tech-list">HTML, CSS (Grid/Flexbox), JavaScript, Jinja2-Templates,
+                            NodeJS, npm, Capacitor (Android)</div>
+                    </div>
+                    <div class="tech-category">
+                        <div class="tech-category-title">Qualitätssicherung</div>
+                        <div class="tech-list">Clean Code, TDD, Unit Tests (JUnit, NUnit, pytest),
+                            Playwright UI-Tests, Integrationstests, Code Coverage (Jacoco, pytest-cov),
+                            Black/White-Box Testing, SonarQube,
+                            LDRA</div>
+                    </div>
+                    <div class="tech-category">
+                        <div class="tech-category-title">Development Tools</div>
+                        <div class="tech-list">VS Code, Visual Studio, Eclipse, LDRA tool suite, Git,
+                            SVN, Maven, Jenkins, wkhtmltopdf</div>
+                    </div>
+                    <div class="tech-category">
+                        <div class="tech-category-title">Requirements & Modeling</div>
+                        <div class="tech-list">Atlassian Jira, IBM Rational DOORS, Visure
+                            Requirements, UML, IBM Rational Rhapsody, Visual Paradigm, Enterprise
+                            Architect</div>
+                    </div>
+                    <div class="tech-category">
+                        <div class="tech-category-title">Automotive Standards</div>
+                        <div class="tech-list">AUTOSAR, ISO 26262 (Functional Safety),
+                            CyberSecurity, MISRA C</div>
+                    </div>
+                </section>
+                <section>
+                    <div class="section-title">Studium & Bildung</div>
+                    <div style="margin-bottom: 10px;">
+                        <strong>Master of Science, Informatik</strong> <span class="tag">Note
+                            1,6</span><br>
+                        <small>Uni Paderborn (04/2011 - 04/2013)</small><br>
+                        <span style="font-size: 12px; color: var(--text-muted);">Schwerpunkt
+                            Softwaretechnik, Nebenfach
+                            Elektrotechnik</span>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <strong>Bachelor of Science, Informatik</strong> <span class="tag">Note
+                            2,6</span><br>
+                        <small>Uni Paderborn (10/2005 - 03/2011)</small><br>
+                        <span style="font-size: 12px; color: var(--text-muted);">Nebenfach
+                            Elektrotechnik</span>
+                    </div>
+                    <div style="margin-bottom: 5px;">
+                        <strong>Fachhochschulreife</strong> (Note
+                        2,0)<br>
+                        <small>Carl-Severing Berufskolleg
+                            (06/2005)</small>
+                    </div>
+                </section>
+                <section>
+                    <div class="section-title">Zertifizierungen</div>
+                    <ul style="font-size: 12.5px; padding-left: 15px;">
+                        <li><strong>AUTOSAR Workshop & Praxis</strong>
+                            (2017)</li>
+                        <li><strong>Functional Safety - ISO 26262</strong>
+                            (2017)</li>
+                        <li><strong>Java EE 7 Intensivkurs</strong> (GEDOPLAN,
+                            2016)</li>
+                        <li><strong>UNIX/Linux Einführung</strong> (RZF NRW,
+                            2023)</li>
+                    </ul>
+                </section>
+                <section>
+                    <div class="section-title">Weitere Qualifikationen</div>
+                    <div class="tech-category">
+                        <div class="tech-category-title">Sprachen</div>
+                        <div class="tech-list">Englisch (verhandlungssicher), Französisch
+                            (Grundkenntnisse)</div>
+                    </div>
+                    <div class="tech-category">
+                        <div class="tech-category-title">Stärken (Gallup)</div>
+                        <div class="tech-list">Wiederherstellung, Wissbegier, Einzelwahrnehmung,
+                            Analytisch, Behutsamkeit, Eigeninitiative, Zuverlässigkeit, Belastbarkeit,
+                            Teamfähigkeit</div>
+                    </div>
+                    <div class="tech-category">
+                        <div class="tech-category-title">Interessen</div>
+                        <div class="tech-list">Wissenschaftliche Artikel, Softwareentwicklung, Bloggen,
+                            Fußball, Fitness, Schwimmen, Fotografie, Lesen,
+                            Spaziergänge</div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <footer>
+            <div>Bielefeld, 07. September 2026</div>
+            <div><strong>Stephan Epp</strong></div>
+        </footer>
+    </div>
+</body>
+
+</html>
